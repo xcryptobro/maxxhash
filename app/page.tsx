@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaXTwitter } from 'react-icons/fa6'
-import { useAccount, useWriteContract } from 'wagmi'
+import { useAccount, useBalance, useWriteContract } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { ethers } from 'ethers'
 import { abi } from './abi'
@@ -15,6 +15,7 @@ export default function Home() {
 
   const { address, status } = useAccount()
   const { data: hash, isPending, writeContract } = useWriteContract()
+  const { data: balanceData } = useBalance({ address })
 
   async function handleMint() {
     console.log('Minting', qty, 'tokens for', totalPrice.toString())
@@ -51,7 +52,7 @@ export default function Home() {
             {status === 'connected' && (
               <>
                 {isPending ? (
-                  <p>Minting...</p>
+                  <span className='loading loading-dots loading-lg'></span>
                 ) : hash ? (
                   <a href={`https://basescan.org/tx/${hash}`} target='_blank'>
                     View Transaction
@@ -71,12 +72,39 @@ export default function Home() {
                         max={3}
                       />
                     </fieldset>
-                    <button
-                      className='btn btn-primary rounded-none'
-                      onClick={handleMint}
-                    >
-                      Mint
-                    </button>
+                    {balanceData && totalPrice > balanceData?.value ? (
+                      <>
+                        <div role='alert' className='alert'>
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            className='stroke-info h-6 w-6 shrink-0'
+                          >
+                            <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              strokeWidth='2'
+                              d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                            ></path>
+                          </svg>
+                          <span>Requires more ETH</span>
+                        </div>
+                        <button
+                          className='btn btn-primary rounded-none'
+                          disabled
+                        >
+                          Mint
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className='btn btn-primary rounded-none'
+                        onClick={handleMint}
+                      >
+                        Mint
+                      </button>
+                    )}
                   </>
                 )}
               </>

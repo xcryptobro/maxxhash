@@ -21,7 +21,7 @@ export default function Home() {
     console.log('Minting', qty, 'tokens for', totalPrice.toString())
     writeContract({
       abi,
-      address: '0x1a8bdb352f523d797dbe5969d6fd9a0935c8f4d7',
+      address: '0x1023b74446981aCdA0f81dd14708bCA247774DA5',
       functionName: 'mint',
       value: totalPrice,
       args: [address, qty]

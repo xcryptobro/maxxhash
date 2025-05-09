@@ -1,32 +1,32 @@
 'use client'
 
-import { useState } from 'react'
+// import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaXTwitter } from 'react-icons/fa6'
-import { useAccount, useBalance, useWriteContract } from 'wagmi'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ethers } from 'ethers'
-import { abi } from './abi'
+// import { useAccount, useBalance, useWriteContract } from 'wagmi'
+// import { ConnectButton } from '@rainbow-me/rainbowkit'
+// import { ethers } from 'ethers'
+// import { abi } from './abi'
 
 export default function Home() {
-  const [qty, setQty] = useState(1)
-  const totalPrice = ethers.parseEther((0.01 * qty).toString())
+  // const [qty, setQty] = useState(1)
+  // const totalPrice = ethers.parseEther((0.01 * qty).toString())
 
-  const { address, status } = useAccount()
-  const { data: hash, isPending, writeContract } = useWriteContract()
-  const { data: balanceData } = useBalance({ address })
+  // const { address, status } = useAccount()
+  // const { data: hash, isPending, writeContract } = useWriteContract()
+  // const { data: balanceData } = useBalance({ address })
 
-  async function handleMint() {
-    console.log('Minting', qty, 'tokens for', totalPrice.toString())
-    writeContract({
-      abi,
-      address: '0x1023b74446981aCdA0f81dd14708bCA247774DA5',
-      functionName: 'mint',
-      value: totalPrice,
-      args: [address, qty]
-    })
-  }
+  // async function handleMint() {
+  //   console.log('Minting', qty, 'tokens for', totalPrice.toString())
+  //   writeContract({
+  //     abi,
+  //     address: '0x1023b74446981aCdA0f81dd14708bCA247774DA5',
+  //     functionName: 'mint',
+  //     value: totalPrice,
+  //     args: [address, qty]
+  //   })
+  // }
 
   return (
     <div className='grid grid-rows-[auto_1fr_auto] h-screen'>
@@ -48,7 +48,14 @@ export default function Home() {
             />
           </div>
           <div className='flex flex-col justify-center items-center w-full gap-6'>
-            <ConnectButton />
+            <h1 className='text-4xl font-bold text-center'>Sold Out</h1>
+            <a
+              href='https://opensea.io/collection/maxxhash'
+              className='btn btn-primary rounded-none'
+            >
+              Available on secondary
+            </a>
+            {/* <ConnectButton />
             {status === 'connected' && (
               <>
                 {isPending ? (
@@ -108,7 +115,7 @@ export default function Home() {
                   </>
                 )}
               </>
-            )}
+            )} */}
           </div>
         </div>
       </div>

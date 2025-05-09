@@ -17,11 +17,13 @@ export default function Home() {
   const { data: hash, isPending, writeContract } = useWriteContract()
 
   async function handleMint() {
-    await writeContract({
+    console.log('Minting', qty, 'tokens for', totalPrice.toString())
+    writeContract({
       abi,
       address: '0x1a8bdb352f523d797dbe5969d6fd9a0935c8f4d7',
       functionName: 'mint',
-      args: [totalPrice, address, qty]
+      value: totalPrice,
+      args: [address, qty]
     })
   }
 

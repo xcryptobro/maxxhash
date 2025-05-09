@@ -74,7 +74,7 @@ export default function Home() {
                     </fieldset>
                     {balanceData && totalPrice > balanceData?.value ? (
                       <>
-                        <div role='alert' className='alert'>
+                        <div role='alert' className='alert rounded-none'>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             fill='none'

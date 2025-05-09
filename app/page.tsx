@@ -11,16 +11,17 @@ import { abi } from './abi'
 
 export default function Home() {
   const [qty, setQty] = useState(1)
+  const totalPrice = ethers.parseEther((0.01 * qty).toString())
 
   const { address, status } = useAccount()
-  const { data: hash, writeContract } = useWriteContract()
+  const { data: hash, isPending, writeContract } = useWriteContract()
 
   async function handleMint() {
     await writeContract({
       abi,
       address: '0x1a8bdb352f523d797dbe5969d6fd9a0935c8f4d7',
       functionName: 'mint',
-      args: [ethers.parseEther('0.01'), address, qty]
+      args: [totalPrice, address, qty]
     })
   }
 
@@ -47,7 +48,9 @@ export default function Home() {
             <ConnectButton />
             {status === 'connected' && (
               <>
-                {hash ? (
+                {isPending ? (
+                  <p>Minting...</p>
+                ) : hash ? (
                   <a href={`https://basescan.org/tx/${hash}`} target='_blank'>
                     View Transaction
                   </a>

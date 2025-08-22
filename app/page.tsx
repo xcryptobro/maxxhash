@@ -29,103 +29,100 @@ export default function Home() {
   // }
 
   return (
-    <div className='grid grid-rows-[auto_1fr_auto] h-screen'>
-      <div className='navbar bg-content'>
-        <div className='navbar-start'>
-          <Link href='/' className='text-2xl hover:text-secondary px-8'>
-            MaxxHash
-          </Link>
-        </div>
+    <div className='grid grid-rows-[auto_1fr_auto]'>
+      <div className='flex flex-col justify-center items-center text-center mt-8 px-4'>
+        <Link
+          href='/'
+          className='text-2xl hover:text-secondary px-8 text-center'
+        >
+          <Image src='/wordmark.png' alt='MaxxHash' width='390' height='164' />
+        </Link>
+        <Link
+          href='/'
+          className='text-2xl hover:text-secondary px-8 text-center'
+        >
+          <Image
+            src='/miner.png'
+            alt='MaxxHash Miner'
+            width={200}
+            height={200}
+          />
+        </Link>
+        <p className='py-6 max-w-md'>
+          MaxxHash is the first $MAXX shared mining pool protocol on Base. Each
+          NFT entitles the holder to 1% of the mining rewards with automated
+          airtdrops. We aim to maintain a competitive mining and staking ranking
+          to best benefit our holders.
+        </p>
+        <a
+          href='https://opensea.io/collection/maxxhash'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='btn btn-primary'
+        >
+          Purchase on OpenSea
+        </a>
       </div>
-      <div className='max-auto px-4 py-8'>
-        <div className='flex flex-row'>
-          <div className='flex flex-col justify-center items-center w-full'>
-            <Image
-              src='/miner.png'
-              alt='MaxxHash Miner'
-              width={400}
-              height={400}
-            />
-          </div>
-          <div className='flex flex-col justify-center items-center w-full gap-6'>
-            <h1 className='text-4xl font-bold text-center'>Sold Out</h1>
-            <a
-              href='https://opensea.io/collection/maxxhash'
-              className='btn btn-primary rounded-none'
-            >
-              Available on secondary
-            </a>
-            {/* <ConnectButton />
-            {status === 'connected' && (
-              <>
-                {isPending ? (
-                  <span className='loading loading-dots loading-lg'></span>
-                ) : hash ? (
-                  <a href={`https://basescan.org/tx/${hash}`} target='_blank'>
-                    View Transaction
-                  </a>
-                ) : (
-                  <>
-                    <fieldset className='fieldset max-w-[150px]'>
-                      <legend className='fieldset-legend'>
-                        Quantity (3 max)
-                      </legend>
-                      <input
-                        type='number'
-                        className='input rounded-none'
-                        value={qty}
-                        onChange={(e) => setQty(Number(e.target.value))}
-                        min={1}
-                        max={3}
-                      />
-                    </fieldset>
-                    {balanceData && totalPrice > balanceData?.value ? (
-                      <>
-                        <div role='alert' className='alert rounded-none'>
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                            className='stroke-info h-6 w-6 shrink-0'
-                          >
-                            <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                            ></path>
-                          </svg>
-                          <span>Requires more ETH</span>
-                        </div>
-                        <button
-                          className='btn btn-primary rounded-none'
-                          disabled
-                        >
-                          Mint
-                        </button>
-                      </>
-                    ) : (
-                      <button
-                        className='btn btn-primary rounded-none'
-                        onClick={handleMint}
-                      >
-                        Mint
-                      </button>
-                    )}
-                  </>
-                )}
-              </>
-            )} */}
-          </div>
-        </div>
+      <h2 className='text-3xl font-bold text-center mt-8'>Mining Farms</h2>
+      <div className='flex flex-row justify-center items-center gap-8 mt-4 mb-8'>
+        <a
+          href='https://www.ethermax.tech/player/0x37F1b64Cb048283238261a4b78aC902a80DBf01e'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='flex flex-col justify-center items-center'
+        >
+          <Image src='/farm1-2.gif' alt='Farm 1' width='400' height='300' />
+          Farm 1
+        </a>
+        <a
+          href='https://www.ethermax.tech/player/0x45A38d1126BF4B2951fA453879B2f952Fc151432'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='flex flex-col justify-center items-center'
+        >
+          <Image src='/farm1-2.gif' alt='Farm 2' width='400' height='300' />
+          Farm 2
+        </a>
+        <a
+          href='https://www.ethermax.tech/player/0xDcA83ef6AcFc9a5db02b5b1E88dc53d0d87BdF69'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='flex flex-col justify-center items-center'
+        >
+          <Image src='/farm3.gif' alt='Farm 3' width='400' height='300' />
+          Farm 3
+        </a>
+      </div>
+      <h2 className='text-3xl font-bold text-center mt-8'>Staking Nodes</h2>
+      <div className='flex flex-row justify-center items-center gap-8 mt-4 mb-8'>
+        <Image src='/staked.png' alt='Staked' width='372' height='223' />
+        <Image src='/nodes.png' alt='Nodes' width='387' height='307' />
       </div>
       <footer className='footer p-10 bg-base-200 text-base-content'>
         <aside className='items-end grid-flow-col align-bottom'>
-          <p className='text-opacity-50'>
-            <a href='https://x.com/MaxxHash'>
-              <FaXTwitter className='text-2xl' />
-            </a>
-          </p>
+          <div className='text-opacity-50'>
+            <div className='grid grid-flow-col gap-4'>
+              <a
+                href='https://x.com/MaxxHash'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <FaXTwitter className='text-2xl' />
+              </a>
+              <a
+                href='https://opensea.io/collection/maxxhash'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <Image
+                  src='/os-logo.svg'
+                  alt='OpenSea Logo'
+                  width='20'
+                  height='20'
+                />
+              </a>
+            </div>
+          </div>
         </aside>
       </footer>
     </div>

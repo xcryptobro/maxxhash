@@ -19,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${quantico.className} antialiased`}>
-        <Providers>{children}</Providers>
+        <div id='maxxhashbg' className='-z-10 '>
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   )
